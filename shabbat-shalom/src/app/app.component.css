@@ -1,20 +1,17 @@
-p {
-    font-family: Lato;
-  }
-
+.myBackground {
+  background-image: url("/assets/Star_of_David.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  padding: 100px 5px 60px 5px;
+  
+}
 .flex-container {
   display: flex;
   flex-direction: column;
 }
 
-footer {
-  background-color:Blue;
-  color:White;
-  font-family: courier;
-  height: 3em;
-  text-align: center;
-}
-
 app-tool-bar {
  display: block;
 }
+

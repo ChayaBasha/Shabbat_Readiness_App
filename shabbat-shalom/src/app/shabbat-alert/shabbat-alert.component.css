@@ -1,13 +1,6 @@
 
-body {
-    background-image: url("/assets/Star_of_David.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: fit-content;
-    padding:18px 16px;
-}
+
 h1 {
-    opacity: 1;
     color: Blue;
     text-align: Center;
     font-family: cursive;

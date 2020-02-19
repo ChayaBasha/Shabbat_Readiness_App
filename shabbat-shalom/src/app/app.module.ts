@@ -6,7 +6,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
 import { ShabbatAlertComponent } from './shabbat-alert/shabbat-alert.component';
-import { LoginRegisterComponent } from './login-register/login-register.component';
+import { LoginComponent } from './login/login.component';
+import { FooterComponent } from './footer/footer.component';
+import { LoginFormComponent } from './login/login-form/login-form.component';
 
 @NgModule({
   imports: [
@@ -14,14 +16,17 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: ShabbatAlertComponent },
-      { path: 'login-register', component: LoginRegisterComponent}
+      {path: 'login',component:LoginComponent},
     ])
   ],
   declarations: [
     AppComponent,
     ToolBarComponent,
     ShabbatAlertComponent,
-    LoginRegisterComponent
+    LoginComponent,
+    FooterComponent,
+    LoginFormComponent,
+    
   ],
   bootstrap: [ AppComponent ]
 })
