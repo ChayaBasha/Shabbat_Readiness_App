@@ -1,23 +1,27 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
 import { ShabbatAlertComponent } from './shabbat-alert/shabbat-alert.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
+import { ChecklistContainerComponent } from './checklist-container/checklist-container.component';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   imports: [
+    HttpClientModule,
     BrowserModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot([
-      { path: '', component: ShabbatAlertComponent },
-      {path: 'login',component:LoginComponent},
-    ])
+    AppRoutingModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
@@ -26,8 +30,13 @@ import { LoginFormComponent } from './login/login-form/login-form.component';
     LoginComponent,
     FooterComponent,
     LoginFormComponent,
-    
+    ChecklistContainerComponent,
   ],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
