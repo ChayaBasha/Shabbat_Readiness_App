@@ -13,6 +13,7 @@ const routes: Routes = [
 { path: '', component: ShabbatAlertComponent },
 {path: 'login',component: LoginComponent},
 {path: 'checklist', component: ChecklistContainerComponent}, 
+
 ]; 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
