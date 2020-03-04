@@ -1,6 +1,10 @@
 <div class="loginContainer">
   <h2 class="title">Log In</h2>
-      <app-login-form (sendForm)="login($event)"></app-login-form>
+      <app-login-form 
+      (sendForm)="login($event)"  
+      [loading]='loading'
+      [submitted]='submitted'
+      [error]='error'>></app-login-form>
 </div>
    
   
