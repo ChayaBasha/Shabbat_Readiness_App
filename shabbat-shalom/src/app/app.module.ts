@@ -13,6 +13,8 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { ChecklistContainerComponent } from './checklist-container/checklist-container.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { RegisterComponent } from './register/register.component';
+import { RegisterFormComponent } from './register/register-form/register-form.component';
 
 @NgModule({
   imports: [
@@ -31,6 +33,8 @@ import { AuthInterceptor } from './auth.interceptor';
     FooterComponent,
     LoginFormComponent,
     ChecklistContainerComponent,
+    RegisterComponent,
+    RegisterFormComponent,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
