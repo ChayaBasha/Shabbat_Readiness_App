@@ -1,4 +1,4 @@
-import { ChecklistModel, Checklist } from "../models/checklist.models";
+import { ChecklistModel, Checklist } from "../models/checklist.model";
 import * as fs from 'fs';
 
 export const defaultCallback = (req: any, res: any) => (

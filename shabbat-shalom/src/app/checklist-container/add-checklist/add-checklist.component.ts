@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs/operators";
 import { AuthService } from 'src/app/auth.service';
+import { ChecklistService } from 'src/app/checklist.service';
 
 @Component({
   selector: 'app-add-checklist',
@@ -20,7 +21,7 @@ export class AddChecklistComponent implements OnInit {
     public formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService,
+    private checklistService: ChecklistService,
   ) {
     
   }
@@ -30,14 +31,14 @@ export class AddChecklistComponent implements OnInit {
     
   }
 
-  addCheclist(checklistForm: FormGroup) {
+  addChecklist(checklistForm: FormGroup) {
     this.submitted = true;
     if (checklistForm.invalid) {
       return;
     }
     this.loading = true;
-    this.authService
-    .addCheclist(checklistForm.get("checklistName").value) 
+    this.checklistService
+    .addChecklist(checklistForm.get("checklistName").value, checklistForm.get('tasks').value) 
     .pipe(first())
     .subscribe(
       data => {
