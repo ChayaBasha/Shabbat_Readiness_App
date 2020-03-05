@@ -15,6 +15,9 @@ import { ChecklistContainerComponent } from './checklist-container/checklist-con
 import { AuthInterceptor } from './auth.interceptor';
 import { RegisterComponent } from './register/register.component';
 import { RegisterFormComponent } from './register/register-form/register-form.component';
+import { ChecklistsComponent } from './checklist-container/checklists/checklists.component';
+import { AddChecklistComponent } from './checklist-container/add-checklist/add-checklist.component';
+import { ChecklistFormComponent } from './checklist-container/add-checklist/checklist-form/checklist-form.component';
 
 @NgModule({
   imports: [
@@ -35,6 +38,9 @@ import { RegisterFormComponent } from './register/register-form/register-form.co
     ChecklistContainerComponent,
     RegisterComponent,
     RegisterFormComponent,
+    ChecklistsComponent,
+    AddChecklistComponent,
+    ChecklistFormComponent,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
