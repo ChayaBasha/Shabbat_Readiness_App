@@ -1,0 +1,16 @@
+.myBackground {
+  background-image: url("/assets/Star_of_David.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  min-height:300px;
+}
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+app-tool-bar {
+ display: block;
+}
+
