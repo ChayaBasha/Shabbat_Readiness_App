@@ -78,7 +78,7 @@ export class AuthService {
       .subscribe((res: any) => {
         if (localStorage.removeItem('access_token') == null && localStorage.removeItem('currentUser') == null) {
           window.alert('Successfully Logged out!');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/']);
         }
       });
   }
@@ -88,7 +88,7 @@ export class AuthService {
       .subscribe((res: any) => {
         if (localStorage.removeItem('access_token') == null && localStorage.removeItem('currentUser') == null) {
           window.alert('Successfully Logged out of all devices!');
-          this.router.navigate(['/login']);
+          this.router.navigate(['./login']);
         }
       });
   }

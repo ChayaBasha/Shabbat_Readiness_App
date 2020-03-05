@@ -8,11 +8,13 @@ import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { ChecklistContainerComponent } from './checklist-container/checklist-container.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
 { path: '', component: ShabbatAlertComponent },
 {path: 'login',component: LoginComponent},
 {path: 'checklist', component: ChecklistContainerComponent}, 
+{path: 'register', component: RegisterComponent},
 
 ]; 
 @NgModule({

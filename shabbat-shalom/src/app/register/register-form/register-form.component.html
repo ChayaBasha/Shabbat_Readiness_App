@@ -1,6 +1,47 @@
-<form name="form" [formGroup]="loginForm" (ngSubmit)="login()">
+<form name="form" [formGroup]="registerForm" (ngSubmit)="register()">
     <div>
-      <p>
+        <input
+          class="input"
+          type="firstName"
+          placeholder="First Name"
+          name="firstName"
+          formControlName="firstName"
+          required
+        />
+        <span style="color:red" *ngIf="f.submitted && !username.valid">
+          <span *ngIf="submitted && f.username.errors"
+            >First Name is required.</span
+          >
+        </span>
+        <span class="icon is-small is-left">
+          <i
+            class="fa fa-envelope"
+            style="font-size: 28px; color: blue"
+          ></i>
+        </span>
+    </div>
+    <div>
+        <input
+          class="input"
+          type="lastName"
+          placeholder="Last Name"
+          name="lastName"
+          formControlName="lastName"
+          required
+        />
+        <span style="color:red" *ngIf="f.submitted && !username.valid">
+          <span *ngIf="submitted && f.username.errors"
+            >Last Name is required.</span
+          >
+        </span>
+        <span class="icon is-small is-left">
+          <i
+            class="fa fa-envelope"
+            style="font-size: 28px; color: blue"
+          ></i>
+        </span>
+    </div>
+    <div>
         <input
           class="input"
           type="username"
@@ -20,10 +61,8 @@
             style="font-size: 28px; color: blue"
           ></i>
         </span>
-      </p>
     </div>
     <div>
-      <p>
         <input
           class="input"
           type="password"
@@ -43,7 +82,6 @@
             style="font-size: 28px; color: blue;"
           ></i>
         </span>
-      </p>
     </div>
     <div class="field">
       <span style="color: red;" *ngIf="submitted && error">{{ error }}</span>
@@ -51,13 +89,13 @@
     <div class="field">
       <p class="control">
         <button [disabled]="loading" class="button is-success">
-          Login
+          Register
         </button>
         <img
           *ngIf="loading"
           src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
         />
-        <button [routerLink]="['/register']" class="btn btn-link">Register</button>
+        <button [routerLink]="['../login']" class="btn btn-link">Cancel</button>
       </p>
     </div>
   </form>

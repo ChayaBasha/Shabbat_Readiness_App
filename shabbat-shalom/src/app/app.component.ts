@@ -15,12 +15,6 @@ export class AppComponent {
     private router: Router,
   ) {}
 
-  logout() {
-    this.authService.logout();
-  }
 
-  logoutAll() {
-    this.authService.logoutAll();
-  }
 }
 
