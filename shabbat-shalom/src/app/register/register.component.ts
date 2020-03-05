@@ -11,45 +11,47 @@ import { AuthService } from "../auth.service";
 })
 export class RegisterComponent implements OnInit {
 
-    loading = false;
-    submitted = false;
-    returnUrl: string;
-    error: string;
-  
-    constructor(
-      public formBuilder: FormBuilder,
-      private route: ActivatedRoute,
-      private router: Router,
-      private authService: AuthService // private alertService: AlertService
-    ) {
-      if (this.authService.isLoggedIn()) {
-        window.alert("Already Logged in!");
-        this.router.navigate(["/checklist"]);
-      }
-    }
-  
-    ngOnInit() {
-      this.returnUrl = this.route.snapshot.queryParams.returnUrl || "/checklist";
-    }
-  
-    login(loginForm: FormGroup) {
-      this.submitted = true;
-      if (loginForm.invalid) {
-        return;
-      }
-      this.loading = true;
-      this.authService
-        .login(loginForm.get("username").value, loginForm.get("password").value)
-        .pipe(first())
-        .subscribe(
-          data => {
-            window.alert("Successfully Logged in!");
-            this.router.navigate([this.returnUrl]);
-          },
-          error => {
-            this.error = error;
-            this.loading = false;
-          }
-        );
+  loading = false;
+  submitted = false;
+  returnUrl: string;
+  error: string;
+
+  constructor(
+    public formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService,
+  ) {
+    if (this.authService.isLoggedIn()) {
+      window.alert('Already Logged in!');
+      this.router.navigate(['/profile']);
     }
   }
+
+  ngOnInit() {
+    this.returnUrl =this.route.snapshot.queryParams.returnUrl ||"/checklist";
+    
+  }
+
+  register(registerForm: FormGroup) {
+    this.submitted = true;
+    if (registerForm.invalid) {
+      return;
+    }
+    this.loading = true;
+    this.authService
+    .register(registerForm.get("firstName").value, registerForm.get("lastName").value, registerForm.get("username").value, registerForm.get("password").value) 
+    .pipe(first())
+    .subscribe(
+      data => {
+          window.alert('Successfully registered and logged in!');
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.error = error;
+          this.loading = false;
+        }
+      );
+  }
+
+}
