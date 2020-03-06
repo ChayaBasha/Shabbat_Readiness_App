@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     private authService: AuthService // private alertService: AlertService
   ) {
     if (this.authService.isLoggedIn()) {
-      window.alert("Already Logged in!");
       this.router.navigate(["/checklist"]);
     }
   }

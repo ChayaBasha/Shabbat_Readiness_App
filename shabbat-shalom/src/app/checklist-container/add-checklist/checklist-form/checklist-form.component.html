@@ -20,18 +20,19 @@
           ></i>
         </span>
     </div>
+    
     <div>
       <input
         class="input"
-        type="tasks"
-        placeholder="task"
-        name="tasks"
-        formControlName="tasks"
+        type="taskName"
+        placeholder="task Name"
+        name="taskName"
+        formControlName="taskName"
         required
       />
       <span style="color:red" *ngIf="f.submitted && !username.valid">
         <span *ngIf="submitted && f.username.errors"
-          >At least one task is required.</span
+          >Task Name is required.</span
         >
       </span>
       <span class="icon is-small is-left">
@@ -41,14 +42,27 @@
         ></i>
       </span>
   </div>
-    
 
-    <div class="field">
-      <span style="color: red;" *ngIf="submitted && error">{{ error }}</span>
-    </div>
+  
+    <input
+      class="input"
+      type="taskDuration"
+      placeholder="enter number of minutes to complete task"
+      name="taskDuration"
+      formControlName="taskDuration"
+      required
+    />
+    <span style="color:red" *ngIf="f.submitted && !username.valid">
+      <span *ngIf="submitted && f.username.errors"
+        >Duration is required.</span
+      >
+    </span>
+    
+    <!-- <app-task-form ></app-task-form -->
+  
     <div class="field">
       <p class="control">
-        <button [disabled]="loading" class="button is-success">
+        <button [disabled]="loading" class="button is-success" (click)='addChecklist(this.checklistForm)'>
           Add Checklist
         </button>
         <img

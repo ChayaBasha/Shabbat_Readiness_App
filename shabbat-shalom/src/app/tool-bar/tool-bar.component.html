@@ -8,8 +8,8 @@
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="./checklist">Checklist</a></li>
-      <li style ="float:right"><a href="./login">Log In</a></li>
-      <!-- <li style ="float:right"><a class="logout()" *ngIf="this.authService.isLoggedIn()" href="/">Log Out</a></li> -->
+      <li style ="float:right"><a *ngIf="!this.authService.isLoggedIn()" href="./login">Log In</a></li>
+      <li style ="float:right"><a (click)="logout()" *ngIf="this.authService.isLoggedIn()">Log Out</a></li>
     </ul>
   </h1>
     
