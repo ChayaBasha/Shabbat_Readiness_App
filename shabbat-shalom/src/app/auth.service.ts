@@ -74,12 +74,13 @@ export class AuthService {
   }
 
   logout() {
+    
     return this.httpClient.post<any>(`${this.API_URL}/users/logout`, {}).pipe(catchError(this.handleError))
       .subscribe((res: any) => {
-        if (localStorage.removeItem('access_token') == null && localStorage.removeItem('currentUser') == null) {
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('currentUser');  
           window.alert('Successfully Logged out!');
-          this.router.navigate(['/']);
-        }
+          this.router.navigate(['/login']);
       });
   }
 

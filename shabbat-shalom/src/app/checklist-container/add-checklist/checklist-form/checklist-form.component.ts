@@ -1,5 +1,9 @@
+ 
 import { Component, OnInit, Output, Input, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from '@angular/router';
+import { ChecklistService } from 'src/app/checklist.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-checklist-form',
@@ -10,17 +14,24 @@ export class ChecklistFormComponent implements OnInit {
 
   checklistForm: FormGroup;
 
-  @Input() loading: boolean;
-  @Input() submitted: boolean;
-  @Input() error: String;
+  loading: boolean;
+  submitted: boolean;
+  returnUrl: string;
+  error: String;
 
   @Output() sendForm = new EventEmitter<FormGroup>();
 
-  constructor(public formBuilder: FormBuilder) {}
+  constructor(
+    public formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private checklistService: ChecklistService,) {}
 
   ngOnInit() {
     this.checklistForm = this.formBuilder.group({
       checklistName: ['', Validators.required],
+      taskName: ['', Validators.required],
+      taskDuration: ['', Validators.required]
     
     });
   }
@@ -33,7 +44,45 @@ export class ChecklistFormComponent implements OnInit {
     return this.checklistForm.get("checklistName");
   }
 
-  addChecklist() {
+  get taskName() {
+    return this.checklistForm.get("taskName");
+  }
+
+  get taskDuration() {
+    return this.checklistForm.get("taskDuration");
+  }
+
+  addChecklist(checklistForm: FormGroup) {
+      this.submitted = true;
+      if (checklistForm.invalid) {
+        return;
+      }
+      this.loading = true;
+      this.checklistService
+    console.log('checklist Added', this.checklistForm)
     this.sendForm.emit(this.checklistForm);
   }
+
+  // addTask(taskForm: FormGroup) {
+  //   this.submitted = true;
+  //   if (taskForm.invalid) {
+  //     return;
+  //   }
+  //   this.loading = true;
+  //   this.checklistService
+  //   .addTask(taskForm.get("taskName").value, taskForm.get('duration').value) 
+  //   .pipe(first())
+  //   .subscribe(
+  //     data => {
+  //         window.alert('Task Added');
+  //         this.router.navigate([this.returnUrl]);
+  //       },
+  //       error => {
+  //         this.error = error;
+  //         this.loading = false;
+  //       }
+  //     );
+  // }
+
 }
+
