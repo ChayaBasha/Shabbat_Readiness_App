@@ -66,26 +66,7 @@ export class ChecklistFormComponent implements OnInit {
     this.taskForms.push(taskForm);
     console.log("I am a task", taskForm)
   }
-  // addTask(taskForm: FormGroup) {
-  //   this.submitted = true;
-  //   if (taskForm.invalid) {
-  //     return;
-  //   }
-  //   this.loading = true;
-  //   this.checklistService
-  //   .addTask(taskForm.get("taskName").value, taskForm.get('duration').value) 
-  //   .pipe(first())
-  //   .subscribe(
-  //     data => {
-  //         window.alert('Task Added');
-  //         this.router.navigate([this.returnUrl]);
-  //       },
-  //       error => {
-  //         this.error = error;
-  //         this.loading = false;
-  //       }
-  //     );
-  // }
+
 
 }
 

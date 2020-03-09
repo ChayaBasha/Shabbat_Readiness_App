@@ -117,10 +117,15 @@ export class AuthService {
 
   handleError(errorRes: HttpErrorResponse) {
     let errorMessage = 'An unknown error occurred!';
+    if(errorRes.status == 401) {
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('currentUser'); 
+    }
     if (!errorRes.error) {
       return throwError(errorMessage);
     }
     const errorCode = errorRes.error;
+    console.log(errorCode);
     switch (errorCode) {
       case 'AUTH_USERNAME':
         errorMessage = 'This username exists already';
