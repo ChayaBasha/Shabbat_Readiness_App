@@ -1,0 +1,39 @@
+.checklistComponent {
+    color: blue;
+    width:fit-content;
+    padding: 12px;
+  }
+  .checklist {
+      list-style-type: none;
+      padding: 0;
+      
+    }
+  
+  .checlist li {
+      cursor: pointer;
+      position: relative;
+      background-color: #EEE;
+      margin: 4px;
+      padding: 4px 4px;
+      height: 30px;
+      border-radius: 4px;
+      list-style: none;
+    }
+  
+    .checklist li:hover {
+      color:  grey;
+      background-color: #DDD;
+      left: 2px;
+    }
+  
+    .checklist li.selected {
+      background-color: whitesmoke;
+      color: white;
+    }
+  
+    .recipeList li.selected:hover {
+      background-color: #BBD8DC;
+      color: white
+    }
+    
+    
