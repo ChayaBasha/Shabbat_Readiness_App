@@ -33,6 +33,7 @@ export const UserSchema = new Schema<UserModel>({
       required: true
     }
   }]
+
 });
 
 export const User = model('User', UserSchema);

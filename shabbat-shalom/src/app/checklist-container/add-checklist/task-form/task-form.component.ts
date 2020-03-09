@@ -48,6 +48,7 @@ export class TaskFormComponent implements OnInit {
 
   addTask() {
     this.sendForm.emit(this.taskForm);
+  
   }
 
 }
