@@ -1,7 +1,9 @@
+<div class="checklistComponent">
 <div *ngIf="checklist$ | async as checklists">
     <ul class="checklist">
       <li *ngFor="let checklist of checklists">
             {{ checklist.checklistName }}
         </li>
     </ul>    
+</div>
 </div>
