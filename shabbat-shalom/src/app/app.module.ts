@@ -19,6 +19,7 @@ import { ChecklistsComponent } from './checklist-container/checklists/checklists
 import { AddChecklistComponent } from './checklist-container/add-checklist/add-checklist.component';
 import { ChecklistFormComponent } from './checklist-container/add-checklist/checklist-form/checklist-form.component';
 import { TaskFormComponent } from './checklist-container/add-checklist/task-form/task-form.component';
+import { ExampleChecklistsComponent } from './checklist-container/example-checklists/example-checklists.component';
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import { TaskFormComponent } from './checklist-container/add-checklist/task-form
     AddChecklistComponent,
     ChecklistFormComponent,
     TaskFormComponent,
+    ExampleChecklistsComponent,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

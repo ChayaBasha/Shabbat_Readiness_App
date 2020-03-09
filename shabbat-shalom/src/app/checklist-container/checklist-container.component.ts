@@ -8,6 +8,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./checklist-container.component.css']
 })
 export class ChecklistContainerComponent implements OnInit {
+  authService: any;
+  checklist$: any;
+  checklistService: any;
   
   constructor(
     
@@ -15,11 +18,19 @@ export class ChecklistContainerComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
-  
+  ngOnChanges() {
+    if (this.authService.isLoggedIn()) {
+      this.checklist$ = this.checklistService.getChecklists()
+    } else {
+      this.router.navigate(['./exampleChecklists'])
+    }
   }
-
   addChecklist(): void {
     this.router.navigate(['/addChecklist']);
   }
+  
+// selectChecklist(checklist:ChecklistModel): void {
+//   this.selectedChecklist = checklist;
+  // this.router.navigate(['/ingredients',checklist.tasks]);
 }
+
