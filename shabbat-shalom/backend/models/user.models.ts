@@ -1,4 +1,5 @@
 import {model, Schema} from 'mongoose';
+import { ChecklistModel } from './checklist.model';
 
 export interface UserModel {
   id: number;
@@ -7,6 +8,7 @@ export interface UserModel {
   username: string;
   password: string;
   tokens: [];
+  checklists: ChecklistModel[];
 }
 
 // User Schema
@@ -32,7 +34,16 @@ export const UserSchema = new Schema<UserModel>({
       type: String,
       required: true
     }
-  }]
+  }],
+
+  // checklists: [{
+  //   type: 
+  //   {checklistName: String,
+  //    tasks: {
+  //     type: [{taskName: String, duration: Number }]
+  // }
+  //   }
+  // }]
 
 });
 

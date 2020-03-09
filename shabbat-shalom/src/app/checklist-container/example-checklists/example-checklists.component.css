@@ -1,3 +1,16 @@
+.checklistContainer {
+    background-color: rgba(255, 255, 255,0.5);
+    position: relative;
+    top: 25px;
+    width: fit-content;
+    min-height: 250px;;
+    padding: 0px 24px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: Blue;
+    
+    }
+
 .checklistComponent {
     color: blue;
     width:fit-content;
@@ -15,6 +28,7 @@
   .checklist {
       list-style-type: none;
       padding: 0;
+      color: Blue;
       
     }
   
@@ -44,5 +58,4 @@
       background-color: #BBD8DC;
       color: white
     }
-    
     

@@ -55,7 +55,7 @@ import { databaseSecret } from '../environment';
   
   export const getLoggedInUser = async (req: any, res: any) => {
     try {
-      res.send(req.user);
+      res.send(req.body.user);
     } catch (error) {
       console.log('Error getting logout post');
       res.status(500).send(error);
