@@ -16,9 +16,13 @@ export const defaultCallback = (req: any, res: any) => (
 export const addChecklist: RequestHandler = async (req: any, res: any) => {
     try {
         const newChecklist = {
-            checklistName: req.checklistName,
-            tasks: req.tasks,
+            checklistName: req.body.checklistName,
+            tasks: req.body.tasks,
         };
+
+        console.log(JSON.stringify(newChecklist));
+
+        console.log(req.body);
 
         const checklist = new Checklist(newChecklist);
         
@@ -27,7 +31,7 @@ export const addChecklist: RequestHandler = async (req: any, res: any) => {
             if (error) {
                 return console.error(error);
             }
-            console.log(req.checklistName + " was added to the database!")
+            console.log(req.body.checklistName + " was added to the database!")
         });
         
         res.status(201).send({checklist});

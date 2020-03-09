@@ -48,7 +48,7 @@ export class ChecklistFormComponent implements OnInit {
   }
 
   get tasks() {
-    return this.checklistForm.get("tasks");
+    return this.taskForms.value;
   }
   addChecklist() {
     console.log("this funciton is working")

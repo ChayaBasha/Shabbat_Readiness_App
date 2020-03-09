@@ -20,7 +20,9 @@
           ></i>
         </span>
     </div>
-    
+    <li *ngFor="let task of tasks">
+                {{ task.taskName}} {{task.taskDuration}}
+            </li>
     <app-task-form (sendForm)=addTask($event)></app-task-form>
   
     <div class="field">
