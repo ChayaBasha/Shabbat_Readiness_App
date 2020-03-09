@@ -1,5 +1,6 @@
 import { ChecklistModel, Checklist } from "../models/checklist.model";
 import * as fs from 'fs';
+import { RequestHandler } from "express";
 
 export const defaultCallback = (req: any, res: any) => (
     err: any,
@@ -12,20 +13,23 @@ export const defaultCallback = (req: any, res: any) => (
   };
 
 // CRUD Create, HTTP Post
-export const addChecklist = async (req: any, res: any) => {
+export const addChecklist: RequestHandler = async (req: any, res: any) => {
     try {
         const newChecklist = {
-            checklistName: req.body.checklistName,
-            tasks: req.body.tasks,
+            checklistName: req.checklistName,
+            tasks: req.tasks,
         };
+
         const checklist = new Checklist(newChecklist);
+        
         
         checklist.save( (error, thisChecklist) => {
             if (error) {
                 return console.error(error);
             }
-            console.log(req.body.title + " was added to the database!")
+            console.log(req.checklistName + " was added to the database!")
         });
+        
         res.status(201).send({checklist});
     } catch (error) {
         res.status(500).send('SERVER_ERROR');
@@ -42,13 +46,13 @@ export const viewChecklists = async (req: any, res: any) => {
 export const updateChecklist = async (req: any, res: any) => {
     const checklistToUpdate = {} as ChecklistModel;
     if (req.body.checklistName) {
-        checklistToUpdate['checklistName'] = req.body.title;
+        checklistToUpdate['checklistName'] = req.checklistName;
     }
     if (req.body.tasks) {
-        checklistToUpdate['tasks'] = req.body.ingredients;
+        checklistToUpdate['tasks'] = req.tasks;
     }
 
-    Checklist.findByIdAndUpdate(req.user.title, {
+    Checklist.findByIdAndUpdate(req.user.checklistName, {
       $set: checklistToUpdate
     }, (error: any, data: any) => {
       if (error) {
