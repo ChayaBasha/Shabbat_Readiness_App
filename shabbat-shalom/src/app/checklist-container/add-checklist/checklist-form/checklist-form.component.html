@@ -21,11 +21,11 @@
         </span>
     </div>
     
-    <app-task-form ></app-task-form>
+    <app-task-form (sendForm)=addTask($event)></app-task-form>
   
     <div class="field">
       <p class="control">
-        <button [disabled]="loading" class="button is-success" (click)='addChecklist(this.checklistForm)'>
+        <button [disabled]="loading" class="button is-success" (click)='addChecklist()'>
           Add Checklist
         </button>
         <img

@@ -4,6 +4,7 @@ import bodyParser = require('body-parser');
 import cors = require ('cors');
 import { databaseName } from './environment';
 import { userRoutes } from './routes/user.routes';
+import { checklistRoutes } from './routes/checklist.route';
 
 const app = express();
 
@@ -31,7 +32,7 @@ const corsOptions = {
   optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
-
+app.use('/checklist', checklistRoutes);
 // Body Parser Middleware
 app.use(bodyParser.json());
 

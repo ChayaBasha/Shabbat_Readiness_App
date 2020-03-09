@@ -1,6 +1,6 @@
  
 import { Component, OnInit, Output, Input, EventEmitter } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChecklistService } from 'src/app/checklist.service';
 import { first } from 'rxjs/operators';
@@ -18,20 +18,23 @@ export class ChecklistFormComponent implements OnInit {
   submitted: boolean;
   returnUrl: string;
   error: String;
+  taskForms: FormArray 
 
-  @Output() sendForm = new EventEmitter<FormGroup>();
+  @Output() sendForm = new EventEmitter<FormArray>();
 
   constructor(
     public formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private checklistService: ChecklistService,) {}
+    private checklistService: ChecklistService
+  ) {
+
+      this.taskForms= new FormArray([])
+    }
 
   ngOnInit() {
     this.checklistForm = this.formBuilder.group({
       checklistName: ['', Validators.required],
-      taskName: ['', Validators.required],
-      taskDuration: ['', Validators.required]
     
     });
   }
@@ -44,25 +47,25 @@ export class ChecklistFormComponent implements OnInit {
     return this.checklistForm.get("checklistName");
   }
 
-  get taskName() {
-    return this.checklistForm.get("taskName");
+  get tasks() {
+    return this.checklistForm.get("tasks");
   }
-
-  get taskDuration() {
-    return this.checklistForm.get("taskDuration");
-  }
-
-  addChecklist(checklistForm: FormGroup) {
+  addChecklist() {
+    console.log("this funciton is working")
       this.submitted = true;
-      if (checklistForm.invalid) {
+      if (this.checklistForm.invalid) {
         return;
       }
       this.loading = true;
       this.checklistService
     console.log('checklist Added', this.checklistForm)
-    this.sendForm.emit(this.checklistForm);
+    this.sendForm.emit(this.formBuilder.array([this.checklistForm, this.taskForms]));
   }
 
+  addTask(taskForm:FormGroup) {
+    this.taskForms.push(taskForm);
+    console.log("I am a task", taskForm)
+  }
   // addTask(taskForm: FormGroup) {
   //   this.submitted = true;
   //   if (taskForm.invalid) {

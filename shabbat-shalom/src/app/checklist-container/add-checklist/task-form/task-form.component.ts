@@ -29,6 +29,7 @@ export class TaskFormComponent implements OnInit {
   ngOnInit() {
     this.taskForm = this.formBuilder.group({
       taskName: ['', Validators.required],
+      taskDuration: [1, Validators.required]
     
     });
   }
@@ -41,7 +42,12 @@ export class TaskFormComponent implements OnInit {
     return this.taskForm.get("taskName");
   }
 
+  get taskDuration() {
+    return this.taskForm.get("taskDuration");
+  }
+
   addTask() {
     this.sendForm.emit(this.taskForm);
   }
+
 }

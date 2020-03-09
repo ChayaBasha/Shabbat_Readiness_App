@@ -42,8 +42,8 @@ export class ChecklistService {
     return this.httpClient.post<ChecklistModel>(`${this.API_URL}/checklist/addChecklist`, {checklistName, tasks}, httpOptions);
   }
 
-  // addTask(taskName: string, duration: number): Observable<TaskModel> {
-  //   return this.httpClient.post<TaskModel>(`${this.API_URL}/checklist/addChecklist`, {taskName, duration}, httpOptions);
+  // addTask(taskName: string, taskDuration: number): Observable<TaskModel> {
+  //   return this.httpClient.post<TaskModel>(`${this.API_URL}/checklist/addChecklist`, {taskName, taskDuration}, httpOptions);
   // }
 
   getChecklist(id:number | string): Observable<any> {

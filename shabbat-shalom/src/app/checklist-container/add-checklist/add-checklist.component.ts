@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
 import { first } from "rxjs/operators";
 import { ChecklistService } from 'src/app/checklist.service';
+import { ConstantPool } from '@angular/compiler';
 
 @Component({
   selector: 'app-add-checklist',
@@ -30,14 +31,15 @@ export class AddChecklistComponent implements OnInit {
     
   }
 
-  addChecklist(checklistForm: FormGroup) {
+  addChecklist(checklistForm: FormArray) {
+    console.log("you called me")
     this.submitted = true;
     if (checklistForm.invalid) {
       return;
     }
     this.loading = true;
     this.checklistService
-    .addChecklist(checklistForm.get("checklistName").value, checklistForm.get('tasks').value) 
+    .addChecklist(checklistForm.at(0).get("checklistName").value, checklistForm.at(1).value) 
     .pipe(first())
     .subscribe(
       data => {

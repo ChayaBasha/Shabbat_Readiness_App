@@ -20,10 +20,10 @@
         </span>
       <input
         class="input"
-        type="duration"
-        placeholder="duration"
-        name="duration"
-        formControlName="duration"
+        type= "number"
+        placeholder="enter number"
+        name="taskDuration"
+        formControlName="taskDuration"
         required
       />
       <span style="color:red" *ngIf="f.submitted && !username.valid">
@@ -42,4 +42,6 @@
     <div class="field">
       <span style="color: red;" *ngIf="submitted && error">{{ error }}</span>
     </div>
+
+    <button type="submit">+</button>
   </form>
