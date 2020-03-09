@@ -32,9 +32,9 @@ const corsOptions = {
   optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
-app.use('/checklist', checklistRoutes);
 // Body Parser Middleware
 app.use(bodyParser.json());
+app.use('/checklist', checklistRoutes);
 
 app.use('/users', userRoutes);
 
