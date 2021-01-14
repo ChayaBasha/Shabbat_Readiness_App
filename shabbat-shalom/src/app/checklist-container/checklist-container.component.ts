@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ChecklistModel } from 'backend/models/checklist.model';
+import { ChecklistService } from '../checklist.service';
 
 @Component({
   selector: 'app-checklist-container',
@@ -8,15 +10,17 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./checklist-container.component.css']
 })
 export class ChecklistContainerComponent implements OnInit {
-  authService: any;
-  checklist$: any;
-  checklistService: any;
+  authService: Observable<ChecklistModel[]>;
+  checklistService: ChecklistModel;
   
   constructor(
-    
+    private checklistServe: ChecklistService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
+
+  ngOnInit() {
+  }
 
   ngOnChanges() {
     if (this.authService.isLoggedIn()) {
@@ -29,8 +33,8 @@ export class ChecklistContainerComponent implements OnInit {
     this.router.navigate(['/addChecklist']);
   }
   
-// selectChecklist(checklist:ChecklistModel): void {
-//   this.selectedChecklist = checklist;
-  // this.router.navigate(['/ingredients',checklist.tasks]);
+selectChecklist(checklist:ChecklistModel): void {
+  this.selectedChecklist = checklist;
+  this.router.navigate(['/checklistTasks',checklist.tasks]);
 }
-
+}
