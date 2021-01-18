@@ -9,7 +9,7 @@ export const databaseSecret = [your password];
 ```
 2. start backend
 ```
-npm run serve
+npm run dev
 ```
 3. start front end
 ```
