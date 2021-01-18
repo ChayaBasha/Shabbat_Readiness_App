@@ -21,20 +21,21 @@ export class ChecklistContainerComponent implements OnInit {
 
   ngOnInit() {
   }
+//TODO: you just commented this out to remove compile errors
 
-  ngOnChanges() {
-    if (this.authService.isLoggedIn()) {
-      this.checklist$ = this.checklistService.getChecklists()
-    } else {
-      this.router.navigate(['./exampleChecklists'])
-    }
-  }
-  addChecklist(): void {
-    this.router.navigate(['/addChecklist']);
-  }
+//   ngOnChanges() {
+//     if (this.authService.isLoggedIn()) {
+//       this.checklist$ = this.checklistService.getChecklists()
+//     } else {
+//       this.router.navigate(['./exampleChecklists'])
+//     }
+//   }
+//   addChecklist(): void {
+//     this.router.navigate(['/addChecklist']);
+//   }
   
-selectChecklist(checklist:ChecklistModel): void {
-  this.selectedChecklist = checklist;
-  this.router.navigate(['/checklistTasks',checklist.tasks]);
-}
+// selectChecklist(checklist:ChecklistModel): void {
+//   this.selectedChecklist = checklist;
+//   this.router.navigate(['/checklistTasks',checklist.tasks]);
+// }
 }
