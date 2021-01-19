@@ -7,6 +7,7 @@ import { userRoutes } from './routes/user.routes';
 import { checklistRoutes } from './routes/checklist.route';
 
 const app = express();
+const authentication = require('./middleware/auth');
 
 // Set port number to port where database will be listening
 const port = process.env.PORT || 3000;
@@ -34,8 +35,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 // Body Parser Middleware
 app.use(bodyParser.json());
-app.use('/checklist', checklistRoutes);
-
+app.use('/checklist', authentication.auth, checklistRoutes);
 app.use('/users', userRoutes);
 
 // Start Server

@@ -1,25 +1,28 @@
-import {model, Schema} from 'mongoose';
-import { TaskModel } from './tasks.model';
+import { model, Schema } from 'mongoose';
 
 export class ChecklistModel {
 
+    owner: number;
     checklistName: string;
-    tasks: TaskModel[];
 
-    constructor(newChecklistName: string, newTasks: TaskModel[]) {
+    constructor(newOwner: number, newChecklistName: string) {
+        this.owner = newOwner;
         this.checklistName = newChecklistName;
-        this.tasks = newTasks;
+
     };
 }
 
 export const ChecklistSchema = new Schema<ChecklistModel>(
     {
-    checklistName: {
-        type: String
-    },
-    tasks: {
-        type: [{taskName: String, duration: Number }]
-    },
-});
+        owner: {
+            type: Schema.Types.ObjectId,
+            required: true
+        },
+
+        checklistName: {
+            type: String
+        }
+      
+    });
 
 export const Checklist = model('Checklist', ChecklistSchema);

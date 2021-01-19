@@ -36,15 +36,6 @@ export const UserSchema = new Schema<UserModel>({
     }
   }],
 
-  // checklists: [{
-  //   type: 
-  //   {checklistName: String,
-  //    tasks: {
-  //     type: [{taskName: String, duration: Number }]
-  // }
-  //   }
-  // }]
-
 });
 
 export const User = model('User', UserSchema);

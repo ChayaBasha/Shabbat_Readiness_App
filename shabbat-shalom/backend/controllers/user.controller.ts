@@ -4,6 +4,7 @@ import {
   import * as bcrypt from 'bcryptjs';
   import * as jwt from 'jsonwebtoken';
 import { databaseSecret } from '../environment';
+import { RequestHandler } from 'express';
   
   const generateAuthToken = async (user: any) => {
     const token = jwt.sign({_id: user._id}, databaseSecret);
@@ -53,7 +54,7 @@ import { databaseSecret } from '../environment';
     }
   };
   
-  export const getLoggedInUser = async (req: any, res: any) => {
+  export const getLoggedInUser: RequestHandler = async (req , res) => {
     try {
       res.send(req.body.user);
     } catch (error) {

@@ -2,8 +2,8 @@ import * as express from 'express';
 import {
     addChecklist,
     viewChecklists,
-    deleteChecklist,
-    updateChecklist
+    // deleteChecklist,
+    // updateChecklist
 
 } from '../controllers/checklist.controller';
 
@@ -17,10 +17,10 @@ checklistRoutes.post('/addChecklist', addChecklist);
 
 checklistRoutes.get('/checklist', viewChecklists);
 
-// Update recipe
+// // Update recipe
 
-checklistRoutes.put('updateChecklist', updateChecklist )
+// checklistRoutes.put('updateChecklist', updateChecklist )
 
-// Delete recipe
+// // Delete recipe
 
-checklistRoutes.delete('/view', deleteChecklist);
+// checklistRoutes.delete('/view', deleteChecklist);
