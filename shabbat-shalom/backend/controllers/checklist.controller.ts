@@ -16,8 +16,8 @@ export const defaultCallback = (req: any, res: any) => (
 export const addChecklist: RequestHandler = async (req: any, res: any) => {
     try {
         const newChecklist = {
-            checklistName: req.body.checklistName,
-            tasks: req.body.tasks,
+          owner: req.body.user.id,  
+          checklistName: req.body.checklistName,
         };
 
         console.log(JSON.stringify(newChecklist));
@@ -42,38 +42,37 @@ export const addChecklist: RequestHandler = async (req: any, res: any) => {
 
 // CRUD Read, HTTP Get
 export const viewChecklists = async (req: any, res: any) => {
-    Checklist.find({}, defaultCallback(req, res));
+    Checklist.findOne({owner: req.user.id}, defaultCallback(req, res));
 };
 
 // CRUD Update, HTTP Put
 
-export const updateChecklist = async (req: any, res: any) => {
-    const checklistToUpdate = {} as ChecklistModel;
-    if (req.body.checklistName) {
-        checklistToUpdate['checklistName'] = req.checklistName;
-    }
-    if (req.body.tasks) {
-        checklistToUpdate['tasks'] = req.tasks;
-    }
+// export const updateChecklist = async (req: any, res: any) => {
+//     const checklistToUpdate = {} as ChecklistModel;
+//     if (req.body.checklistName) {
+//         checklistToUpdate['checklistName'] = req.checklistName;
+//     }
+   
+//     }
 
-    Checklist.findByIdAndUpdate(req.user.checklistName, {
-      $set: checklistToUpdate
-    }, (error: any, data: any) => {
-      if (error) {
-        res.status(500).send('UPDATE_FAIL');
-      } else {
-        res.send(data);
-      }
-    });
-};
+//     Checklist.findByIdAndUpdate(req.user.checklistName, {
+//       $set: checklistToUpdate
+//     }, (error: any, data: any) => {
+//       if (error) {
+//         res.status(500).send('UPDATE_FAIL');
+//       } else {
+//         res.send(data);
+//       }
+//     });
+// };
 
-export const deleteChecklist = async (checklistName: string) => {
+// export const deleteChecklist = async (checklistName: string) => {
 
-    const checklist = await Checklist.findOneAndDelete({checklistName});
-    if (!checklist) {
-        throw new Error('404 Recipe not found error');
-    }
+//     const checklist = await Checklist.findOneAndDelete({checklistName});
+//     if (!checklist) {
+//         throw new Error('404 Recipe not found error');
+//     }
 
-    // return confirmation?
-    // res.status(200).send('Delete successfull');
-}
+//     // return confirmation?
+//     // res.status(200).send('Delete successfull');
+// }

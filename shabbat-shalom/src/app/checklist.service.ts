@@ -38,34 +38,34 @@ export class ChecklistService {
     );
   }
 
-  addChecklist(checklistName: string, tasks: TaskModel[]): Observable<ChecklistModel> {
-    return this.httpClient.post<ChecklistModel>(`${this.API_URL}/checklist/addChecklist`, {checklistName, tasks}, httpOptions);
+  addChecklist(owner: number, checklistName: string): Observable<ChecklistModel> {
+    return this.httpClient.post<ChecklistModel>(`${this.API_URL}/checklist/addChecklist`, { owner, checklistName}, httpOptions);
   }
 
   // addTask(taskName: string, taskDuration: number): Observable<TaskModel> {
   //   return this.httpClient.post<TaskModel>(`${this.API_URL}/checklist/addChecklist`, {taskName, taskDuration}, httpOptions);
   // }
 
-  getChecklist(id:number | string): Observable<any> {
-    return this.httpClient.get(`${this.API_URL}/checklist/checklist`).pipe(
-      map((res: Response) => {
-        return res || {};
-      }),
-      catchError(this.handleError)
-    );
-  }
+  // getChecklist(id:number | string): Observable<any> {
+  //   return this.httpClient.get(`${this.API_URL}/checklist/checklist`).pipe(
+  //     map((res: Response) => {
+  //       return res || {};
+  //     }),
+  //     catchError(this.handleError)
+  //   );
+  // }
  
-  updateChecklist(checklistName: string, tasks: TaskModel[]) {
-    return this.httpClient.put<any>(`${this.API_URL}/checklist/updateChecklist`, {checklistName, tasks}).pipe(
-      map((res: any) => {
-        this.getChecklist(res._id).subscribe((result) => {
-          this.checklistToUpdate$ = result;
-          localStorage.setItem('checklist', JSON.stringify(result));
-          return result;
-        });
-      }),
-      catchError(this.handleError));
-  }
+  // updateChecklist(checklistName: string, tasks: TaskModel[]) {
+  //   return this.httpClient.put<any>(`${this.API_URL}/checklist/updateChecklist`, {checklistName, tasks}).pipe(
+  //     map((res: any) => {
+  //       this.getChecklist(res._id).subscribe((result) => {
+  //         this.checklistToUpdate$ = result;
+  //         localStorage.setItem('checklist', JSON.stringify(result));
+  //         return result;
+  //       });
+  //     }),
+  //     catchError(this.handleError));
+  // }
 
   handleError(errorRes: HttpErrorResponse) {
     let errorMessage = 'An unknown error occurred!';
