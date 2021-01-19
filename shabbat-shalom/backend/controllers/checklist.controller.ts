@@ -42,7 +42,7 @@ export const addChecklist: RequestHandler = async (req: any, res: any) => {
 
 // CRUD Read, HTTP Get
 export const viewChecklists = async (req: any, res: any) => {
-    Checklist.find({}, defaultCallback(req, res));
+    Checklist.findOne({owner: req.user.id}, defaultCallback(req, res));
 };
 
 // CRUD Update, HTTP Put
