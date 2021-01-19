@@ -33,8 +33,8 @@ export class ChecklistContainerComponent implements OnInit {
     this.router.navigate(['/addChecklist']);
   }
   
-selectChecklist(checklist:ChecklistModel): void {
-  this.selectedChecklist = checklist;
-  this.router.navigate(['/checklistTasks',checklist.tasks]);
-}
+// selectChecklist(checklist:ChecklistModel): void {
+//   this.selectedChecklist = checklist;
+//   this.router.navigate(['/checklistTasks',checklist.tasks]);
+// }
 }
