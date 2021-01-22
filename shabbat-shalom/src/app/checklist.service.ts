@@ -22,15 +22,15 @@ const httpOptions = {
 })
 export class ChecklistService {
   API_URL: string = environment.apiUrl;
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authentication', localStorage.getItem('access_token'));
 
   private checklistToUpdate$: Observable<ChecklistModel>;
 
   constructor(private httpClient: HttpClient, public router: Router) {
   }
 
-  getChecklists(): Observable<any> {
-    return this.httpClient.get(`${this.API_URL}/checklist/checklist`).pipe(
+  getChecklists(owner: number): Observable<any> {
+    return this.httpClient.post(`${this.API_URL}/checklist/getChecklist`, {owner}).pipe(
       map((res: Response) => {
         return res || {};
       }),
@@ -42,9 +42,9 @@ export class ChecklistService {
     return this.httpClient.post<ChecklistModel>(`${this.API_URL}/checklist/addChecklist`, { owner, checklistName}, httpOptions);
   }
 
-  // addTask(taskName: string, taskDuration: number): Observable<TaskModel> {
-  //   return this.httpClient.post<TaskModel>(`${this.API_URL}/checklist/addChecklist`, {taskName, taskDuration}, httpOptions);
-  // }
+  addTask(checkListId: number, taskName: string, taskDuration: number): Observable<TaskModel> {
+    return this.httpClient.post<TaskModel>(`${this.API_URL}/checklist/addChecklist`, {checkListId, taskName, taskDuration}, httpOptions);
+  }
 
   // getChecklist(id:number | string): Observable<any> {
   //   return this.httpClient.get(`${this.API_URL}/checklist/checklist`).pipe(

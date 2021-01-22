@@ -31,3 +31,5 @@ This was my first app. I developed it while I was taking a course at Regis Unive
 3. delte checklist
 4. update checklist
 5. logout does a weird popup
+6. Need to get token to expire so that it doesn't stay forever
+

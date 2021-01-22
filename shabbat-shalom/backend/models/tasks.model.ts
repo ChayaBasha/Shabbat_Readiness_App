@@ -2,12 +2,12 @@ import { model, Schema } from 'mongoose';
 
 export class TaskModel {
 
-    checkList_id: number;
+    checkListId: number;
     taskName: string;
     taskDuration: number;
 
     constructor(newCheckList_id: number, newtaskName: string, newTaskDuration: number) {
-        this.checkList_id = newCheckList_id;
+        this.checkListId = newCheckList_id;
         this.taskName = newtaskName;
         this.taskDuration = newTaskDuration;
     };
@@ -15,7 +15,7 @@ export class TaskModel {
 
 export const TaskSchema = new Schema<TaskModel>(
     {
-        checkList: {
+        checkListId: {
             type: Schema.Types.ObjectId,
             required: true
         },

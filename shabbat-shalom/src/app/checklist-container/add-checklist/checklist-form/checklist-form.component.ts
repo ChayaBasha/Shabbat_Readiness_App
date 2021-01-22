@@ -51,7 +51,7 @@ export class ChecklistFormComponent implements OnInit {
     return this.taskForms.value;
   }
   addChecklist() {
-    console.log("this funciton is working")
+    console.log("this funciton is working from the checklist form component")
       this.submitted = true;
       if (this.checklistForm.invalid) {
         return;
