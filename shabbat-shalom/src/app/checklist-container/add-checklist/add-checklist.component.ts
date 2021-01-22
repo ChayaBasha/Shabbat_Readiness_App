@@ -5,6 +5,7 @@ import { first } from "rxjs/operators";
 import { ChecklistService } from 'src/app/checklist.service';
 import { ConstantPool } from '@angular/compiler';
 
+
 @Component({
   selector: 'app-add-checklist',
   templateUrl: './add-checklist.component.html',
@@ -32,14 +33,15 @@ export class AddChecklistComponent implements OnInit {
   }
 
   addChecklist(checklistForm: FormArray) {
-    console.log("you called me")
+    console.log("you called me from add-checklist component")
     this.submitted = true;
     if (checklistForm.invalid) {
       return;
     }
     this.loading = true;
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.checklistService
-    .addChecklist(checklistForm.at(0).get("checklistName").value, checklistForm.at(1).value) 
+    .addChecklist(currentUser._id, checklistForm.at(0).get("checklistName").value) 
     .pipe(first())
     .subscribe(
       data => {

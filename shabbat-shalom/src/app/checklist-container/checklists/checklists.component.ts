@@ -24,7 +24,8 @@ export class ChecklistsComponent implements OnInit {
 
   ngOnInit() {
     if (this.authService.isLoggedIn()) {
-      this.checklist$ = this.checklistService.getChecklists();
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      this.checklist$ = this.checklistService.getChecklists(currentUser._id);
     } else {
       this.router.navigate(['./exampleChecklists'])
     }

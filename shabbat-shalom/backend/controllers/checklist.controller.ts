@@ -3,46 +3,48 @@ import * as fs from 'fs';
 import { RequestHandler } from "express";
 
 export const defaultCallback = (req: any, res: any) => (
-    err: any,
-    data: any
-  ) => {
-    if (err) {
-      res.send(err);
-    }
-    res.json(data);
-  };
+  err: any,
+  data: any
+) => {
+  if (err) {
+    console.error(err);
+    res.send(err);
+  }
+  res.json(data);
+};
 
 // CRUD Create, HTTP Post
 export const addChecklist: RequestHandler = async (req: any, res: any) => {
-    try {
-        const newChecklist = {
-          owner: req.body.user.id,  
-          checklistName: req.body.checklistName,
-        };
+  try {
+    const newChecklist = {
+      owner: req.body.owner,
+      checklistName: req.body.checklistName,
+    };
 
-        console.log(JSON.stringify(newChecklist));
+    console.log(JSON.stringify(newChecklist));
 
-        console.log(req.body);
+    console.log(req.body);
 
-        const checklist = new Checklist(newChecklist);
-        
-        
-        checklist.save( (error, thisChecklist) => {
-            if (error) {
-                return console.error(error);
-            }
-            console.log(req.body.checklistName + " was added to the database!")
-        });
-        
-        res.status(201).send({checklist});
-    } catch (error) {
-        res.status(500).send('SERVER_ERROR');
-    }
+    const checklist = new Checklist(newChecklist);
+
+
+    checklist.save((error, thisChecklist) => {
+      if (error) {
+        return console.error(error);
+      }
+      console.log(req.body.checklistName + " was added to the database!")
+    });
+
+    res.status(201).send({ checklist });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('SERVER_ERROR');
+  }
 };
 
 // CRUD Read, HTTP Get
 export const viewChecklists = async (req: any, res: any) => {
-    Checklist.findOne({owner: req.user.id}, defaultCallback(req, res));
+  Checklist.find({ owner: req.body.owner }, defaultCallback(req, res));
 };
 
 // CRUD Update, HTTP Put
@@ -52,7 +54,7 @@ export const viewChecklists = async (req: any, res: any) => {
 //     if (req.body.checklistName) {
 //         checklistToUpdate['checklistName'] = req.checklistName;
 //     }
-   
+
 //     }
 
 //     Checklist.findByIdAndUpdate(req.user.checklistName, {

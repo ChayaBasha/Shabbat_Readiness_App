@@ -15,7 +15,7 @@ checklistRoutes.post('/addChecklist', addChecklist);
 
 // View checklist
 
-checklistRoutes.get('/checklist', viewChecklists);
+checklistRoutes.post('/getChecklist', viewChecklists);
 
 // // Update recipe
 
