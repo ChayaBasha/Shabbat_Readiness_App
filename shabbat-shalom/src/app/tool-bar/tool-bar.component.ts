@@ -1,3 +1,4 @@
+//This component contains the navigation tool bar at the top of the app
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
