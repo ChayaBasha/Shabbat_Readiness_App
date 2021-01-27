@@ -30,7 +30,7 @@ export class ChecklistService {
   }
 
   getChecklists(owner: number): Observable<any> {
-    return this.httpClient.post(`${this.API_URL}/checklist/getChecklist`, {owner}).pipe(
+    return this.httpClient.get(`${this.API_URL}/checklist/userChecklist/${owner}`).pipe(
       map((res: Response) => {
         return res || {};
       }),
