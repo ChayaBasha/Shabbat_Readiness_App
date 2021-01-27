@@ -3,7 +3,7 @@
         <div *ngIf="checklist$ | async as checklists">
             <ul class="checklist">
             <li *ngFor="let checklist of checklists">
-                  <a href="../checklist-details/checklist-details.component.html"> {{ checklist.checklistName }} </a>
+                  <a href="/checklistDetails"> {{ checklist.checklistName }} </a>
                 </li>
             </ul>    
         </div>
