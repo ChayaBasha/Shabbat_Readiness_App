@@ -23,7 +23,7 @@ export class ChecklistContainerComponent implements OnInit {
 
   ngOnInit() {
   }
-//TODO: you just commented this out to remove compile errors
+
 
   ngOnChanges() {
     if (this.authService.isLoggedIn()) {

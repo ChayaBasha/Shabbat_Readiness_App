@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -11,6 +12,7 @@ import { ChecklistContainerComponent } from './checklist-container/checklist-con
 import { RegisterComponent } from './register/register.component';
 import { AddChecklistComponent } from './checklist-container/add-checklist/add-checklist.component';
 import { ExampleChecklistsComponent } from './checklist-container/example-checklists/example-checklists.component';
+import {ChecklistDetailsComponent} from './checklist-container/checklist-details/checklist-details.component';
 
 const routes: Routes = [
 { path: '', component: ShabbatAlertComponent },
@@ -18,6 +20,7 @@ const routes: Routes = [
 {path: 'checklist', component: ChecklistContainerComponent}, 
 {path: 'register', component: RegisterComponent},
 {path: 'addChecklist', component: AddChecklistComponent},
+{path: 'checklistDetails', component: ChecklistDetailsComponent},
 {path: 'exampleChecklists', component: ExampleChecklistsComponent}
 
 ]; 

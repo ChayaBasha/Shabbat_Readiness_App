@@ -1,7 +1,8 @@
 import * as express from 'express';
 import {
     addChecklist,
-    viewChecklists,
+    viewAllChecklists,
+    viewChecklist,
     // deleteChecklist,
     // updateChecklist
 
@@ -13,9 +14,10 @@ export const checklistRoutes = express.Router();
 
 checklistRoutes.post('/addChecklist', addChecklist);
 
-// View checklist
+// View checklists
 
-checklistRoutes.post('/getChecklist', viewChecklists);
+checklistRoutes.get(`/userChecklist/:owner`, viewAllChecklists);
+checklistRoutes.get(`/userChecklist/:owner/:checklistId`,viewChecklist)
 
 // // Update recipe
 
