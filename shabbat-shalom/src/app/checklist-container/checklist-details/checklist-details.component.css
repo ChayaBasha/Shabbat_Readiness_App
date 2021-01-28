@@ -1,20 +1,15 @@
 .checklistDetails {
-    background-color:rgb(88, 175, 179);
-    width: 100px;
-    height: 100px;
-    padding: 12px;
-   
-    
+    grid-row: 2/3;
+    grid-column: 4/5;
+    align-self: center;
+    align-content: center;
+    padding: 24px;
 }
-
-.sectionName {
-    color:whitesmoke;
-    font-size:larger;
-    text-align:center;
+h1 {
+    text-align: center;
+    color: blue;
 }
-
-.sectionBox {
-    background-color:white;
-    width: fit-content;
-    padding: 8px;
+.buttonStyle {
+    align-self:center;
+    color: blue;
 }
