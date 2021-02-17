@@ -1,0 +1,47 @@
+<form name="form" [formGroup]="taskForm" (ngSubmit)="addTask()">
+        <input
+          class="input"
+          type="taskName"
+          placeholder="Task Name"
+          name="tasklistName"
+          formControlName="taskName"
+          required
+        />
+        <span style="color:red" *ngIf="f.submitted && !username.valid">
+          <span *ngIf="submitted && f.username.errors"
+            >Task Name is required.</span
+          >
+        </span>
+        <span class="icon is-small is-left">
+          <i
+            class="fa fa-envelope"
+            style="font-size: 28px; color: blue"
+          ></i>
+        </span>
+      <input
+        class="input"
+        type= "number"
+        placeholder="enter number"
+        name="taskDuration"
+        formControlName="taskDuration"
+        required
+      />
+      <span style="color:red" *ngIf="f.submitted && !username.valid">
+        <span *ngIf="submitted && f.username.errors"
+          >Please enter how long the taks will take .</span
+        >
+      </span>
+      <span class="icon is-small is-left">
+        <i
+          class="fa fa-envelope"
+          style="font-size: 28px; color: blue"
+        ></i>
+      </span>
+    
+
+    <div class="field">
+      <span style="color: red;" *ngIf="submitted && error">{{ error }}</span>
+    </div>
+
+    <button type="submit">+</button>
+  </form>

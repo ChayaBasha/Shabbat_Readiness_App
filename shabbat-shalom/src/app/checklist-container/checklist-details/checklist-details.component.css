@@ -1,0 +1,15 @@
+.checklistDetails {
+    grid-row: 2/3;
+    grid-column: 4/5;
+    align-self: center;
+    align-content: center;
+    padding: 24px;
+}
+h1 {
+    text-align: center;
+    color: blue;
+}
+.buttonStyle {
+    align-self:center;
+    color: blue;
+}
