@@ -30,7 +30,12 @@ export class ChecklistsComponent implements OnInit {
       this.router.navigate(['./exampleChecklists'])
     }
   }
-// selectChecklist(checklist:ChecklistModel): void {
-//   this.selectedChecklist = checklist;
-  // this.router.navigate(['/ingredients',checklist.tasks]);
+
+  getChecklist(checklistId: number) {
+    console.log("I am trying to get the checklist");
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+ 
+    this.checklistService.getChecklist(currentUser._id, checklistId)
+  }
+  
 }
