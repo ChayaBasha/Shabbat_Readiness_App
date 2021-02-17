@@ -1,0 +1,10 @@
+<div class="checklistComponent">
+    <h1 class="tilte"> My Checklists</h1>
+        <div *ngIf="checklist$ | async as checklists">
+            <ul class="checklist">
+            <li *ngFor="let checklist of checklists">
+                <a (click)="getChecklist()"> {{ checklist.checklistName }} </a>
+                </li>
+            </ul>    
+        </div>
+</div>

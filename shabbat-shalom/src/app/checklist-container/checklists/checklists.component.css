@@ -1,0 +1,53 @@
+.checklistComponent {
+    color: blue;
+    width:fit-content;
+    padding: 12px;
+    grid-column: 1/3;
+    grid-row: 2/3;
+  }
+  .title {
+    font-family: "Lato";
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: BLue;
+    opacity:100%;
+    }
+    
+  .checklist {
+      list-style-type: none;
+      padding: 0;
+      
+    }
+  
+  .checklist li {
+      cursor: pointer;
+      position: relative;
+      background-color: #EEE;
+      margin: 4px;
+      padding: 4px 4px;
+      height: 30px;
+      border-radius: 4px;
+      list-style: none;
+    }
+  
+    .checklist li:hover {
+      color:  grey;
+      background-color: #DDD;
+      left: 2px;
+    }
+  
+    .checklist li.selected {
+      background-color: whitesmoke;
+      color: white;
+    }
+  
+    .recipeList li.selected:hover {
+      background-color: #BBD8DC;
+      color: white
+    }
+    
+    a {
+      text-decoration: none;
+    }
+    
