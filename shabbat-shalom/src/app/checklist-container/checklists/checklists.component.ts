@@ -5,6 +5,7 @@ import { ChecklistService } from 'src/app/checklist.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 
+
 @Component({
   selector: 'app-checklists',
   templateUrl: './checklists.component.html',
@@ -13,7 +14,7 @@ import { AuthService } from 'src/app/auth.service';
 export class ChecklistsComponent implements OnInit {
 
   checklist$: Observable<ChecklistModel[]>;
-  selectedChecklist: ChecklistModel;
+  currentChecklist: ChecklistModel;
   
   constructor(
     private checklistService: ChecklistService, 
@@ -31,11 +32,15 @@ export class ChecklistsComponent implements OnInit {
     }
   }
 
-  getChecklist(checklistId: number) {
+  getChecklist(checklistId:number) {
     console.log("I am trying to get the checklist");
+    console.log(checklistId);
+  
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
- 
-    this.checklistService.getChecklist(currentUser._id, checklistId)
+    const currentChecklist: Observable<any> = this.checklistService.getChecklist(currentUser._id, checklistId);
+    
+    currentChecklist.toPromise().then(v => console.log(v));
+    
   }
   
 }

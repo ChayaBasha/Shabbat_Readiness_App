@@ -38,17 +38,20 @@ export class ChecklistService {
     );
   }
 
-  addChecklist(owner: number, checklistName: string): Observable<ChecklistModel> {
-    return this.httpClient.post<ChecklistModel>(`${this.API_URL}/checklist/addChecklist`, { owner, checklistName}, httpOptions);
+  addChecklist(owner: number, checkListId:number): Observable<ChecklistModel> {
+    return this.httpClient.post<ChecklistModel>(`${this.API_URL}/checklist/addChecklist`, { owner, checkListId}, httpOptions);
   }
 
   addTask(checkListId: number, taskName: string, taskDuration: number): Observable<TaskModel> {
     return this.httpClient.post<TaskModel>(`${this.API_URL}/checklist/addChecklist`, {checkListId, taskName, taskDuration}, httpOptions);
   }
 
-  getChecklist(owner: number, checkListId:number | string): Observable<any> {
-    return this.httpClient.get(`${this.API_URL}/checklist/userChecklists/:${owner}/${checkListId}`).pipe(
+  getChecklist(owner: number, checkListId: number): Observable<any> {
+    
+    // debugger;
+    return this.httpClient.get(`${this.API_URL}/checklist/userChecklist/${owner}/${checkListId}`).pipe(
       map((res: Response) => {
+        console.log("I am the service running");
         return res || {};
       }),
       catchError(this.handleError)
