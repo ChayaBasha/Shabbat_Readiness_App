@@ -9,7 +9,7 @@ export const defaultCallback = (req: any, res: any) => (
   if (err) {
     console.error(err);
     res.send(err);
-  }
+  } else
   res.json(data);
 };
 
@@ -48,7 +48,8 @@ export const viewAllChecklists = async (req: any, res: any) => {
 };
 
 export const viewChecklist = async (req: any, res: any) => {
-  Checklist.findById({checkListId: req.params.checkListId}, defaultCallback(req, res));
+  console.log("I am hitting the database");
+  Checklist.findById(req.params.checkListId, defaultCallback(req, res));
 };
 // CRUD Update, HTTP Put
 

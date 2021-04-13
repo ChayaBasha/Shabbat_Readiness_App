@@ -1,3 +1,4 @@
+//This component is a container for both the list of checklists and the details display for each checklist
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -22,6 +23,7 @@ export class ChecklistContainerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
   }
 
 

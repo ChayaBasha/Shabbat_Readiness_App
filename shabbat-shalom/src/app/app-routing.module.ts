@@ -17,10 +17,11 @@ import {ChecklistDetailsComponent} from './checklist-container/checklist-details
 const routes: Routes = [
 { path: '', component: ShabbatAlertComponent },
 {path: 'login',component: LoginComponent},
-{path: 'checklist', component: ChecklistContainerComponent}, 
+{path: 'checklist', component: ChecklistContainerComponent},
+{path: 'checklist/:checklist_id', component: ChecklistContainerComponent}, 
 {path: 'register', component: RegisterComponent},
 {path: 'addChecklist', component: AddChecklistComponent},
-{path: 'checklistDetails', component: ChecklistDetailsComponent},
+// {path: 'checklist/:checklist_id', component: ChecklistDetailsComponent},
 {path: 'exampleChecklists', component: ExampleChecklistsComponent}
 
 ]; 
