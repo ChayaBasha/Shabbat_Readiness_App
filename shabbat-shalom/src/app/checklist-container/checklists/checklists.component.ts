@@ -1,3 +1,5 @@
+//This component contains the clickable list of checklists that the user has created
+
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ChecklistModel } from 'backend/models/checklist.model';
@@ -32,15 +34,8 @@ export class ChecklistsComponent implements OnInit {
     }
   }
 
-  getChecklist(checklistId:number) {
-    console.log("I am trying to get the checklist");
-    console.log(checklistId);
-  
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    const currentChecklist: Observable<any> = this.checklistService.getChecklist(currentUser._id, checklistId);
-    
-    currentChecklist.toPromise().then(v => console.log(v));
-    
+  getChecklist(checklistId:number | string) {
+    this.router.navigate(['/checklist', checklistId])
   }
   
 }
